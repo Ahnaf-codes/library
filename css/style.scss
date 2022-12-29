@@ -12,9 +12,35 @@ body {
 	box-sizing: border-box;
 	overflow-x: hidden;
 	min-height: 100vh;
+	font-family: "Inter", sans-serif;
+	font-weight: 400;
 }
 
 #wrapper {
 	overflow: auto;
 	min-height: 100vh;
+}
+
+header {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+h1 {
+	font-family: "Roboto Slab", serif;
+	font-weight: 600;
+	font-size: 5.5rem;
+}
+
+#slogan {
+	font-size: 2.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+	:root {
+		font-size: 50%;
+	}
 }
