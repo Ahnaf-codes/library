@@ -22,9 +22,12 @@ body {
   min-height: 100vh;
 }
 
+.flex {
+  display: flex;
+}
+
 header {
   text-align: center;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
