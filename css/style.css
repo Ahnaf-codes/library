@@ -1,5 +1,8 @@
 :root {
   font-size: 62.5%;
+  --bg: #011627;
+  --accent: #be00fe;
+  --text: #fdfffc;
 }
 
 * {
@@ -15,11 +18,13 @@ body {
   min-height: 100vh;
   font-family: "Inter", sans-serif;
   font-weight: 400;
+  color: var(--text);
 }
 
 #wrapper {
   overflow: auto;
   min-height: 100vh;
+  background-color: var(--bg);
 }
 
 .flex {
@@ -41,6 +46,11 @@ h1 {
 
 #slogan {
   font-size: 2.5rem;
+}
+
+#stats {
+  border: 1px var(--accent) solid;
+  border-radius: 10px;
 }
 
 @media only screen and (max-width: 768px) {
