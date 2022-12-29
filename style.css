@@ -1,3 +1,21 @@
 :root {
   font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-transform: capitalize;
+  position: relative;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#wrapper {
+  overflow: auto;
+  min-height: 100vh;
 }/*# sourceMappingURL=style.css.map */
