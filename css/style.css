@@ -156,7 +156,6 @@ h6 {
   transform: translate(-50%, -50%) scale(0.1);
   background-color: var(--bg);
   padding: 2vw;
-  width: 50vw;
   max-width: 600px;
   border: 5px var(--accent) solid;
   border-radius: 10px;
@@ -170,5 +169,11 @@ h6 {
   #stats {
     font-size: 80%;
     width: 90vw;
+  }
+  #stats .card .title {
+    font-size: 2rem;
+  }
+  #stat-card-container {
+    gap: 0.5rem;
   }
 }/*# sourceMappingURL=style.css.map */
