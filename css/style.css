@@ -172,6 +172,9 @@ h6 {
     font-size: 80%;
     width: 90vw;
   }
+  #stats .title {
+    margin-bottom: 0.5rem;
+  }
   #stats .card .title {
     font-size: 2rem;
   }
