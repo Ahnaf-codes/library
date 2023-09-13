@@ -15,3 +15,10 @@ closeModal.addEventListener("click", () => {
     modalBg.style.visibility = "hidden";
     bookFormContainer.classList.remove("open-modal");
 });
+
+function book(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+}
