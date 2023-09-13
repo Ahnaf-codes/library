@@ -47,6 +47,7 @@ body {
   font-family: "Inter", sans-serif;
   font-weight: 600;
   color: var(--text);
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -130,6 +131,7 @@ h6 {
   position: absolute;
   top: 0px;
   right: 0px;
+  cursor: pointer;
 }
 
 .modal-bg {
