@@ -26,7 +26,7 @@ function displayBook(book) {
     bookCard.classList.add("grid");
     bookCard.innerHTML = `<h3 class="book-title">${book.title}</h3>
     <p class="book-author">${book.author}</p>
-    <p class="book-pages">${book.pages}</p>
+    <p class="book-pages">${book.pages} pages</p>
     <p class="book-status">${book.status}</p>`;
     bookGrid.appendChild(bookCard);
 }
