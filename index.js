@@ -4,12 +4,13 @@ const addBookBtn = document.getElementById("add-book-btn");
 const modalBg = document.getElementById("modal-bg");
 const bookFormContainer = document.getElementById("book-form-container");
 const form = document.getElementById("book-form");
+const errorMsg = document.getElementById("error");
 const closeModal = document.getElementById("close");
 const bookGrid = document.getElementById("book-grid");
 
 function book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
+    this.title = title.toLowerCase();
+    this.author = author.toLowerCase();
     this.pages = pages;
     this.status = status;
 }
@@ -45,10 +46,18 @@ form.addEventListener("submit", (event) => {
     const pages = document.getElementById("pages").value;
     const status = document.getElementById("status").value;
     const newBook = new book(title, author, pages, status);
-    library.push(newBook);
-    displayBook(newBook);
-    console.log(newBook);
-    close();
+
+    if (library.some((obj) => obj.title === newBook.title)) {
+        errorMsg.style.visibility = "visible";
+        console.log(errorMsg);
+    } else {
+        library.push(newBook);
+        displayBook(newBook);
+        console.log(newBook);
+        close();
+    }
+
+
 });
 
 
