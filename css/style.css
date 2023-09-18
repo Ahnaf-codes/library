@@ -3,6 +3,7 @@
   --bg: #3f4549;
   --accent: #be00fe;
   --text: #fdfffc;
+  --error: #dc143c;
   --shadow: #000;
 }
 
@@ -134,6 +135,12 @@ input {
   padding: 0.5rem;
   border: 2px var(--accent) solid;
   font-family: "Inter" !important;
+}
+
+#error {
+  color: var(--error);
+  text-align: center;
+  visibility: hidden;
 }
 
 #close {

@@ -3,6 +3,7 @@
 	--bg: #3f4549;
 	--accent: #be00fe;
 	--text: #fdfffc;
+	--error: #dc143c;
 	--shadow: #000;
 }
 
@@ -53,6 +54,8 @@ body {
 .btn:hover {
 	transform: scale(1.1);
 	box-shadow: 1px 4px 20px 1px var(--shadow);
+	// background-color: var(--text);
+	// color: var(--accent);
 }
 
 .container {
@@ -136,6 +139,12 @@ input {
 	padding: 0.5rem;
 	border: 2px var(--accent) solid;
 	font-family: "Inter" !important;
+}
+
+#error {
+	color: var(--error);
+	text-align: center;
+	visibility: hidden;
 }
 
 #close {
