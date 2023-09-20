@@ -7,6 +7,8 @@ const form = document.getElementById("book-form");
 const errorMsg = document.getElementById("error");
 const closeModal = document.getElementById("close");
 const bookGrid = document.getElementById("book-grid");
+let index = 0;
+
 
 function book(title, author, pages, status) {
     this.title = title.toLowerCase();
@@ -23,13 +25,32 @@ function close() {
 
 function displayBook(book) {
     const bookCard = document.createElement("div");
+    bookCard.setAttribute("data-index", index);
     bookCard.classList.add("book-card");
     bookCard.classList.add("grid");
     bookCard.innerHTML = `<h3 class="book-title">${book.title}</h3>
     <p class="book-author">${book.author}</p>
     <p class="book-pages">${book.pages} pages</p>
-    <p class="book-status">${book.status}</p>`;
+    <button class="book-status btn">${book.status}</button>
+    <button class="btn" id="remove">Remove</button>`;
     bookGrid.appendChild(bookCard);
+}
+
+function toggleStatus() {
+    const bookStatus = document.querySelectorAll(".book-status");
+    bookStatus.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            console.log(e.target.parentNode.dataset.index);
+            const i = e.target.parentNode.dataset.index;
+            if (btn.textContent === "Read") {
+                library[i].status = "Unread";
+                btn.textContent = "Unread";
+            } else {
+                library[i].status = "Read";
+                btn.textContent = "Read";
+            }
+        });
+    });
 }
 
 addBookBtn.addEventListener("click", () => {
@@ -55,10 +76,12 @@ form.addEventListener("submit", (event) => {
         displayBook(newBook);
         console.log(newBook);
         close();
+        toggleStatus();
+        index++;
     }
 
-
 });
+
 
 
 
