@@ -1,5 +1,6 @@
 "use strict";
 let library = [];
+let btnEventArr = [];
 const addBookBtn = document.getElementById("add-book-btn");
 const modalBg = document.getElementById("modal-bg");
 const bookFormContainer = document.getElementById("book-form-container");
@@ -15,7 +16,7 @@ function book(title, author, pages, status) {
     this.author = author.toLowerCase();
     this.pages = pages;
     this.status = status;
-}
+};
 
 function close() {
     modalBg.style.visibility = "hidden";
@@ -32,9 +33,9 @@ function displayBook(book) {
     <p class="book-author">${book.author}</p>
     <p class="book-pages">${book.pages} pages</p>
     <button class="book-status btn">${book.status}</button>
-    <button class="btn" id="remove">Remove</button>`;
+    <button class="remove btn">Remove</button>`;
     bookGrid.appendChild(bookCard);
-}
+};
 
 function toggleStatus() {
     const bookStatus = document.querySelectorAll(".book-status");
@@ -51,7 +52,27 @@ function toggleStatus() {
             }
         });
     });
-}
+};
+
+function removeBook() {
+    const remove = document.querySelectorAll(".remove");
+    remove.forEach(btn => {
+        if (!btnEventArr.includes(btn)) {
+            btn.addEventListener("click", (e) => {
+                const parent = e.target.parentNode;
+                const i = e.target.parentNode.dataset.index;
+                library.splice(i, 1);
+                parent.remove();
+                console.log(i);
+                console.log(btn);
+                console.log(btnEventArr);
+            });
+            btnEventArr.push(btn);
+        } else {
+            return;
+        }
+    });
+};
 
 addBookBtn.addEventListener("click", () => {
     modalBg.style.visibility = "visible";
@@ -72,16 +93,17 @@ form.addEventListener("submit", (event) => {
         errorMsg.style.visibility = "visible";
         console.log(errorMsg);
     } else {
+        errorMsg.style.visibility = "hidden";
         library.push(newBook);
         displayBook(newBook);
         console.log(newBook);
         close();
         toggleStatus();
+        removeBook();
         index++;
     }
 
 });
 
 
-
-
+//TODO: fix read and remove button
