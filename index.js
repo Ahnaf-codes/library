@@ -11,11 +11,12 @@ const bookGrid = document.getElementById("book-grid");
 let index = 0;
 
 
-function book(title, author, pages, status) {
+function book(title, author, pages, status, id) {
     this.title = title.toLowerCase();
     this.author = author.toLowerCase();
     this.pages = pages;
     this.status = status;
+    this.id = id;
 };
 
 function close() {
@@ -26,7 +27,7 @@ function close() {
 
 function displayBook(book) {
     const bookCard = document.createElement("div");
-    bookCard.setAttribute("data-index", index);
+    bookCard.setAttribute("data-title", book.title);
     bookCard.classList.add("book-card");
     bookCard.classList.add("grid");
     bookCard.innerHTML = `<h3 class="book-title">${book.title}</h3>
@@ -56,16 +57,23 @@ function toggleStatus() {
 
 function removeBook() {
     const remove = document.querySelectorAll(".remove");
-    remove.forEach(btn => {
+    remove.forEach((btn) => {
         if (!btnEventArr.includes(btn)) {
             btn.addEventListener("click", (e) => {
                 const parent = e.target.parentNode;
-                const i = e.target.parentNode.dataset.index;
+                const title = e.target.parentNode.dataset.title;
+                let i;
+                library.forEach((book) => {
+                    if (book.title === title) {
+                        i = library.indexOf(book);
+                    } else {
+                        return;
+                    }
+                });
                 library.splice(i, 1);
                 parent.remove();
+                console.log(title);
                 console.log(i);
-                console.log(btn);
-                console.log(btnEventArr);
             });
             btnEventArr.push(btn);
         } else {
@@ -87,7 +95,7 @@ form.addEventListener("submit", (event) => {
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     const status = document.getElementById("status").value;
-    const newBook = new book(title, author, pages, status);
+    const newBook = new book(title, author, pages, status, index);
 
     if (library.some((obj) => obj.title === newBook.title)) {
         errorMsg.style.visibility = "visible";
