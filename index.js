@@ -60,8 +60,8 @@ function toggleStatus() {
                     library[i].status = "Read";
                     btn.textContent = "Read";
                 }
-                btnEventArr.push(btn);
             });
+            btnEventArr.push(btn);
         } else {
             return;
         }
