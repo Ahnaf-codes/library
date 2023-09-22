@@ -41,17 +41,30 @@ function displayBook(book) {
 function toggleStatus() {
     const bookStatus = document.querySelectorAll(".book-status");
     bookStatus.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            console.log(e.target.parentNode.dataset.index);
-            const i = e.target.parentNode.dataset.index;
-            if (btn.textContent === "Read") {
-                library[i].status = "Unread";
-                btn.textContent = "Unread";
-            } else {
-                library[i].status = "Read";
-                btn.textContent = "Read";
-            }
-        });
+        if (!btnEventArr.includes(btn)) {
+            btn.addEventListener('click', (e) => {
+                console.log(e.target.parentNode.dataset.title);
+                const title = e.target.parentNode.dataset.title;
+                let i;
+                library.forEach((book) => {
+                    if (book.title === title) {
+                        i = library.indexOf(book);
+                    } else {
+                        return;
+                    }
+                });
+                if (btn.textContent === "Read") {
+                    library[i].status = "Unread";
+                    btn.textContent = "Unread";
+                } else {
+                    library[i].status = "Read";
+                    btn.textContent = "Read";
+                }
+                btnEventArr.push(btn);
+            });
+        } else {
+            return;
+        }
     });
 };
 
