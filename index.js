@@ -90,8 +90,14 @@ function removeBook() {
                 const title = e.target.parentNode.dataset.title;
                 let i;
                 library.forEach((book) => {
+
                     if (book.title === title) {
                         i = library.indexOf(book);
+                        if (book.status === "Read") {
+                            readBooks.textContent--;
+                        } else {
+                            unreadBooks.textContent--;
+                        };
                     } else {
                         return;
                     }
@@ -136,5 +142,10 @@ form.addEventListener("submit", (event) => {
         toggleStatus();
         removeBook();
         totalBooks.textContent++;
+        if (status == "Read") {
+            readBooks.textContent++;
+        } else {
+            unreadBooks.textContent++;
+        }
     }
 });
