@@ -1,6 +1,10 @@
 "use strict";
 let library = [];
 let btnEventArr = [];
+let readBooks = document.getElementById("read");
+let unreadBooks = document.getElementById("unread");
+let totalBooks = document.getElementById("total");
+let uniqueAuthors = document.getElementById("unique-authors");
 const addBookBtn = document.getElementById("add-book-btn");
 const modalBg = document.getElementById("modal-bg");
 const bookFormContainer = document.getElementById("book-form-container");
@@ -8,15 +12,17 @@ const form = document.getElementById("book-form");
 const errorMsg = document.getElementById("error");
 const closeModal = document.getElementById("close");
 const bookGrid = document.getElementById("book-grid");
-let index = 0;
+readBooks.textContent = 0;
+unreadBooks.textContent = 0;
+totalBooks.textContent = 0;
+uniqueAuthors.textContent = 0;
 
 
-function book(title, author, pages, status, id) {
+function book(title, author, pages, status) {
     this.title = title.toLowerCase();
     this.author = author.toLowerCase();
     this.pages = pages;
     this.status = status;
-    this.id = id;
 };
 
 function close() {
@@ -56,9 +62,16 @@ function toggleStatus() {
                 if (btn.textContent === "Read") {
                     library[i].status = "Unread";
                     btn.textContent = "Unread";
+                    unreadBooks.textContent++;
+                    readBooks.textContent--;
+                    console.log(readBooks);
+                    console.log(unreadBooks);
                 } else {
                     library[i].status = "Read";
                     btn.textContent = "Read";
+                    unreadBooks.textContent--;
+                    readBooks.textContent++;
+                    console.log(readBooks);
                 }
             });
             btnEventArr.push(btn);
@@ -87,6 +100,7 @@ function removeBook() {
                 parent.remove();
                 console.log(title);
                 console.log(i);
+                totalBooks.textContent--;
             });
             btnEventArr.push(btn);
         } else {
@@ -108,7 +122,7 @@ form.addEventListener("submit", (event) => {
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     const status = document.getElementById("status").value;
-    const newBook = new book(title, author, pages, status, index);
+    const newBook = new book(title, author, pages, status);
 
     if (library.some((obj) => obj.title === newBook.title)) {
         errorMsg.style.visibility = "visible";
@@ -121,10 +135,6 @@ form.addEventListener("submit", (event) => {
         close();
         toggleStatus();
         removeBook();
-        index++;
+        totalBooks.textContent++;
     }
-
 });
-
-
-//TODO: fix read and remove button
