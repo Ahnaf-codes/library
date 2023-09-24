@@ -97,7 +97,7 @@ h6 {
   text-align: center;
   padding: 1rem;
   margin: 0 auto;
-  width: 80vw;
+  width: 65vw;
 }
 #stats .title {
   font-size: 3rem;
@@ -105,7 +105,7 @@ h6 {
 }
 
 #stat-card-container {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 #stat-card-container .card {
@@ -113,7 +113,7 @@ h6 {
   aspect-ratio: 1/1;
   background-color: var(--bg);
   border-radius: 20px;
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: 600;
 }
 #stat-card-container .card .title {
@@ -216,7 +216,7 @@ input {
   }
   #stats {
     font-size: 80%;
-    width: 90vw;
+    width: 85vw;
   }
   #stats .title {
     margin-bottom: 0.5rem;
