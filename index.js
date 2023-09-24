@@ -4,7 +4,6 @@ let btnEventArr = [];
 let readBooks = document.getElementById("read");
 let unreadBooks = document.getElementById("unread");
 let totalBooks = document.getElementById("total");
-let uniqueAuthors = document.getElementById("unique-authors");
 const addBookBtn = document.getElementById("add-book-btn");
 const modalBg = document.getElementById("modal-bg");
 const bookFormContainer = document.getElementById("book-form-container");
@@ -15,7 +14,6 @@ const bookGrid = document.getElementById("book-grid");
 readBooks.textContent = 0;
 unreadBooks.textContent = 0;
 totalBooks.textContent = 0;
-uniqueAuthors.textContent = 0;
 
 
 function book(title, author, pages, status) {
@@ -27,6 +25,7 @@ function book(title, author, pages, status) {
 
 function close() {
     modalBg.style.visibility = "hidden";
+    errorMsg.style.visibility = "hidden";
     bookFormContainer.classList.remove("open-modal");
     form.reset();
 };
